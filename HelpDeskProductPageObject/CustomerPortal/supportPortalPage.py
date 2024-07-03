@@ -1,82 +1,85 @@
 from selenium.webdriver.common.by import By
-from webdriverbase import AppPage
+from HelpDeskCommonMethods.webdriverbase import AppPage
 import time
+from HelpDeskProductPageObject.Admin_Portal.AdminPortalTest2ndPage import AdminPortalTest2ndPage
+
 
 class SupportPortalPage(AppPage):
     def __init__(self, driver):
         super().__init__(driver)
 
-    def navigateToHappyFoxSupportPortalURL(self, url):
+    def navigate_to_happyfox_support_portal_url(self, url):
         self.driver.get(url)
 
-    def enterSubject(self, text):
-        self.Subject().send_keys(text)
+    def enter_subject(self, text):
+        self.subject().send_keys(text)
 
-    def enterMessage(self, text):
-        self.Message().send_keys(text)
+    def enter_message(self, text):
+        self.message().send_keys(text)
 
-    def clickAddCC(self):
-        self.AddCC().click()
+    def click_add_cc(self):
+        self.add_cc().click()
 
-    def clickAddBCC(self):
-        self.AddBCC().click()
+    def click_add_bcc(self):
+        self.add_bcc().click()
 
-    def enterCC(self, text):
-        self.CC().send_keys(text)
+    def enter_cc(self, text):
+        self.cc().send_keys(text)
 
-    def enterBCC(self, text):
-        self.BCC().send_keys(text)
+    def enter_bcc(self, text):
+        self.bcc().send_keys(text)
 
-    def addingScreenshot(self, abc):
-        self.BrowseFile().send_keys(self.getTestDataFullDirPath(abc))
+    def adding_screenshot(self, abc):
+        self.browse_file().send_keys(self.get_test_data_full_dir_path(abc))
 
-    def enterFullName(self, text):
+    def enter_full_name(self, text):
         self.sleep()
-        self.FullName().send_keys(text)
+        self.full_name().send_keys(text)
 
-    def enterEmail(self, text):
+    def enter_email(self, text):
         self.sleep()
-        self.Email().send_keys(text)
+        self.email().send_keys(text)
 
-    def enterPhone(self, text):
-        self.Phone().send_keys(text)
+    def enter_phone(self, text):
+        self.phone().send_keys(text)
 
-    def clickCreateTicket(self):
-        self.CreateTicket().click()
+    def click_create_ticket(self):
+        self.create_ticket().click()
         return AdminPortalTest2ndPage(self.driver)
 
     def sleep(self):
         time.sleep(1)
 
-    def Subject(self):
+    def subject(self):
         return self.driver.find_element(By.ID, "id_subject")
 
-    def Message(self):
-        return self.driver.find_element(By.XPATH, "//div[@class='cke_wysiwyg_div cke_reset cke_enable_context_menu cke_editable cke_editable_themed cke_contents_ltr cke_show_borders']")
+    def message(self):
+        return self.driver.find_element(By.XPATH,
+                                        "//div[@class='cke_wysiwyg_div cke_reset cke_enable_context_menu cke_editable cke_editable_themed cke_contents_ltr cke_show_borders']")
 
-    def AddCC(self):
+    def add_cc(self):
         return self.driver.find_element(By.ID, "add-cc")
 
-    def AddBCC(self):
+    def add_bcc(self):
         return self.driver.find_element(By.ID, "add-bcc")
 
-    def CC(self):
+    def cc(self):
         return self.driver.find_element(By.XPATH, "//input[@id='id_cc']")
 
-    def BCC(self):
+    def bcc(self):
         return self.driver.find_element(By.XPATH, "//input[@id='id_bcc']")
 
-    def BrowseFile(self):
+    def browse_file(self):
         return self.driver.find_element(By.XPATH, "//a[@class='hf-attach-file_link']")
 
-    def FullName(self):
+    def full_name(self):
         return self.driver.find_element(By.ID, "id_name")
 
-    def Email(self):
+    def email(self):
         return self.driver.find_element(By.ID, "id_email")
 
-    def Phone(self):
+    def phone(self):
         return self.driver.find_element(By.ID, "id_phone")
 
-    def CreateTicket(self):
+    def create_ticket(self):
         return self.driver.find_element(By.XPATH, "//button[@id='submit']")
